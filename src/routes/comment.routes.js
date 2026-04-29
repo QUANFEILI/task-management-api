@@ -11,6 +11,20 @@ const authMiddleware = require('../middleware/auth')
  *     tags: [Comments]
  *     security:
  *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               content:
+ *                 type: string
+ *               taskId:
+ *                 type: integer
+ *     responses:
+ *       201:
+ *         description: Comment created
  */
 router.post('/', authMiddleware, controller.createComment)
 

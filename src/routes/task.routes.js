@@ -11,6 +11,22 @@ const authMiddleware = require('../middleware/auth')
  *     tags: [Tasks]
  *     security:
  *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               projectId:
+ *                 type: integer
+ *     responses:
+ *       201:
+ *         description: Task created
  */
 router.post('/', authMiddleware, controller.createTask)
 

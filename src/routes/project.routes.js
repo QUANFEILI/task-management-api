@@ -20,6 +20,8 @@ const authMiddleware = require('../middleware/auth')
  *             properties:
  *               name:
  *                 type: string
+ *               description:
+ *                 type: string
  *     responses:
  *       201:
  *         description: Project created
@@ -54,6 +56,9 @@ router.get('/', authMiddleware, controller.getProjects)
  *         required: true
  *         schema:
  *           type: integer
+ *     responses:
+ *       200:
+ *         description: Project found
  */
 router.get('/:id', authMiddleware, controller.getProjectById)
 
@@ -65,6 +70,27 @@ router.get('/:id', authMiddleware, controller.getProjectById)
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Project ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Project updated
  */
 router.put('/:id', authMiddleware, controller.updateProject)
 
@@ -76,6 +102,15 @@ router.put('/:id', authMiddleware, controller.updateProject)
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Project deleted
  */
 router.delete('/:id', authMiddleware, controller.deleteProject)
 

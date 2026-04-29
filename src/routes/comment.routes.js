@@ -43,6 +43,9 @@ router.post('/', authMiddleware, controller.createComment)
  *         schema:
  *           type: integer
  *         description: Task ID
+ *     responses:
+ *       200:
+ *         description: List of comments
  */
 router.get('/', authMiddleware, controller.getComments)
 
@@ -54,6 +57,15 @@ router.get('/', authMiddleware, controller.getComments)
  *     tags: [Comments]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Comment found
  */
 router.get('/:id', authMiddleware, controller.getCommentById)
 
@@ -65,6 +77,24 @@ router.get('/:id', authMiddleware, controller.getCommentById)
  *     tags: [Comments]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               content:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Comment updated
  */
 router.put('/:id', authMiddleware, controller.updateComment)
 
@@ -76,6 +106,15 @@ router.put('/:id', authMiddleware, controller.updateComment)
  *     tags: [Comments]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Comment deleted
  */
 router.delete('/:id', authMiddleware, controller.deleteComment)
 

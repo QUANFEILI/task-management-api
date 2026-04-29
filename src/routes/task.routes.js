@@ -45,6 +45,9 @@ router.post('/', authMiddleware, controller.createTask)
  *         schema:
  *           type: integer
  *         description: Project ID
+ *     responses:
+ *       200:
+ *         description: List of tasks
  */
 router.get('/', authMiddleware, controller.getTasks)
 
@@ -56,6 +59,15 @@ router.get('/', authMiddleware, controller.getTasks)
  *     tags: [Tasks]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Task found
  */
 router.get('/:id', authMiddleware, controller.getTaskById)
 
@@ -67,6 +79,26 @@ router.get('/:id', authMiddleware, controller.getTaskById)
  *     tags: [Tasks]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Task updated
  */
 router.put('/:id', authMiddleware, controller.updateTask)
 
@@ -78,6 +110,15 @@ router.put('/:id', authMiddleware, controller.updateTask)
  *     tags: [Tasks]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Task deleted
  */
 router.delete('/:id', authMiddleware, controller.deleteTask)
 

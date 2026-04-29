@@ -9,7 +9,7 @@ const options = {
     },
     servers: [
       {
-        url: 'https://task-management-api-1868.onrender.com',
+        url: '/',
       },
     ],
     components: {

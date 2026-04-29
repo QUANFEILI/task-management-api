@@ -18,10 +18,17 @@ router.post('/', authMiddleware, controller.createTask)
  * @swagger
  * /api/tasks:
  *   get:
- *     summary: Get all tasks
+ *     summary: Get all tasks by projectId
  *     tags: [Tasks]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: projectId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Project ID
  */
 router.get('/', authMiddleware, controller.getTasks)
 

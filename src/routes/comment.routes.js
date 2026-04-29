@@ -18,10 +18,17 @@ router.post('/', authMiddleware, controller.createComment)
  * @swagger
  * /api/comments:
  *   get:
- *     summary: Get all comments
+ *     summary: Get all comments by taskId
  *     tags: [Comments]
  *     security:
  *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: taskId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Task ID
  */
 router.get('/', authMiddleware, controller.getComments)
 

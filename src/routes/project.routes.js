@@ -54,13 +54,6 @@ router.get('/', authMiddleware, controller.getProjects)
  *         required: true
  *         schema:
  *           type: integer
- *     responses:
- *       200:
- *         description: Project found
- *       403:
- *         description: Forbidden
- *       404:
- *         description: Not found
  */
 router.get('/:id', authMiddleware, controller.getProjectById)
 
@@ -72,28 +65,6 @@ router.get('/:id', authMiddleware, controller.getProjectById)
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *     responses:
- *       200:
- *         description: Project updated
- *       403:
- *         description: Forbidden
- *       404:
- *         description: Not found
  */
 router.put('/:id', authMiddleware, controller.updateProject)
 
@@ -105,19 +76,6 @@ router.put('/:id', authMiddleware, controller.updateProject)
  *     tags: [Projects]
  *     security:
  *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *     responses:
- *       200:
- *         description: Project deleted
- *       403:
- *         description: Forbidden
- *       404:
- *         description: Not found
  */
 router.delete('/:id', authMiddleware, controller.deleteProject)
 
